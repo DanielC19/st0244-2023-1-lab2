@@ -19,3 +19,22 @@ idNat m =
     let idNatHelper :: Nat -> Nat -> Nat
         idNatHelper _ x = x
     in recNat m idNatHelper m
+
+addNat :: Nat -> Nat -> Nat
+addNat m n =
+    let addNatHelper :: Nat -> Nat -> Nat
+        addNatHelper _ x = Succ x
+    in recNat n addNatHelper m
+
+subNat :: Nat -> Nat -> Nat
+subNat m n =
+    let subNatHelper :: Nat -> Nat -> Nat
+        subNatHelper _ Zero = Zero
+        subNatHelper _ (Succ x) = x
+    in recNat m subNatHelper n
+
+multNat :: Nat -> Nat -> Nat
+multNat m n =
+    let multNatHelper :: Nat -> Nat -> Nat
+        multNatHelper _ x = addNat m x
+    in recNat Zero multNatHelper n
