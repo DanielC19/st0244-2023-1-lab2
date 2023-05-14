@@ -13,3 +13,9 @@ naturalToNat n = Succ (naturalToNat (n - 1))
 recNat :: a -> (Nat -> a -> a) -> Nat -> a
 recNat a _ Zero = a
 recNat a h (Succ n) = h n (recNat a h n)
+
+idNat :: Nat -> Nat
+idNat m =
+    let idNatHelper :: Nat -> Nat -> Nat
+        idNatHelper _ x = x
+    in recNat m idNatHelper m
