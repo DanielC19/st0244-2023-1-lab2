@@ -38,12 +38,12 @@ prop_multN m n = natToNatural (multNat m' n') == m * n
     n' = naturalToNat n
 
 args :: Args
-args = stdArgs { maxSuccess = 1000 }
+args = stdArgs { maxSuccess = 10000 }
 
 -- Run QuickCheck tests
 main :: IO ()
 main = do
-    quickCheck prop_addN
-    quickCheck prop_idN
-    quickCheck prop_multN
+    quickCheckWith args prop_idN
     quickCheckWith args prop_subNat
+    quickCheckWith args prop_addN
+    quickCheckWith args prop_multN
