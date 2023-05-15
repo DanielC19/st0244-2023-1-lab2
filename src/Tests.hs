@@ -37,6 +37,14 @@ prop_multN m n = natToNatural (multNat m' n') == m * n
     m' = naturalToNat m
     n' = naturalToNat n
 
+prop_predN :: Natural -> Bool
+prop_predN m =
+    if m == 0 then natToNatural (predNat m') == 0
+    else natToNatural (predNat m') == m-1
+    where
+    m':: Nat
+    m' = naturalToNat m
+
 args :: Args
 args = stdArgs { maxSuccess = 10000 }
 
@@ -47,3 +55,4 @@ main = do
     quickCheckWith args prop_subNat
     quickCheckWith args prop_addN
     quickCheckWith args prop_multN
+    quickCheckWith args prop_predN
