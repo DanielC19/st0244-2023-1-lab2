@@ -30,8 +30,10 @@ prop_idN m = natToNatural (idNat m') == m
     m':: Nat
     m' = naturalToNat m
 
-prop_subNat :: Natural -> Natural -> Property
-prop_subNat m n = n <= m ==> natToNatural (subNat m' n') == m - n
+prop_subNat :: Natural -> Natural -> Bool
+prop_subNat m n =
+    if n > m then natToNatural (subNat m' n') == 0
+    else natToNatural (subNat m' n') == m - n
     where
     m', n':: Nat
     m' = naturalToNat m
