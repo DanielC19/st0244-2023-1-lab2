@@ -1,3 +1,4 @@
+module PRF where
 import GHC.Natural (Natural)
 
 data Nat = Zero | Succ Nat
