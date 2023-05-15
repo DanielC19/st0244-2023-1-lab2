@@ -20,6 +20,13 @@ idNat m =
         idNatHelper _ x = x
     in recNat m idNatHelper m
 
+predNat :: Nat -> Nat
+predNat m =
+    let predNatHelper :: Nat -> Nat -> Nat
+        predNatHelper _ Zero = Zero
+        predNatHelper _ (Succ x) = x
+    in recNat m predNatHelper (Succ Zero)
+
 addNat :: Nat -> Nat -> Nat
 addNat m n =
     let addNatHelper :: Nat -> Nat -> Nat
