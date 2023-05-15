@@ -1,21 +1,12 @@
 import PRF
 import GHC.Natural (Natural)
 import Test.QuickCheck
-    ( Arbitrary ( arbitrary, shrink)
-    , Property
-    , arbitrarySizedNatural
-    , quickCheck
-    , stdArgs
+    ( stdArgs
     , quickCheckWith
     , Args
     , maxSuccess
-    , (==>)
-    , shrinkIntegral
     )
-
-instance Arbitrary Natural where
-    arbitrary = arbitrarySizedNatural
-    shrink    = shrinkIntegral
+import Test.QuickCheck.Instances.Natural ()
 
 prop_addN :: Natural -> Natural -> Bool
 prop_addN m n = natToNatural (addNat m' n') == m + n
