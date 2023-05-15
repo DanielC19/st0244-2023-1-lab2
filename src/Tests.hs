@@ -1,25 +1,25 @@
 import PRF
 import GHC.Natural (Natural)
 import Test.QuickCheck
-  ( Arbitrary ( arbitrary, shrink)
-  , Property
-  , arbitrarySizedNatural
-  , quickCheck
-  , stdArgs
-  , quickCheckWith
-  , Args
-  , maxSuccess
-  , (==>)
-  , shrinkIntegral
-  )
+    ( Arbitrary ( arbitrary, shrink)
+    , Property
+    , arbitrarySizedNatural
+    , quickCheck
+    , stdArgs
+    , quickCheckWith
+    , Args
+    , maxSuccess
+    , (==>)
+    , shrinkIntegral
+    )
 
 instance Arbitrary Natural where
-  arbitrary = arbitrarySizedNatural
-  shrink    = shrinkIntegral
+    arbitrary = arbitrarySizedNatural
+    shrink    = shrinkIntegral
 
 prop_addN :: Natural -> Natural -> Bool
 prop_addN m n = natToNatural (addNat m' n') == m + n
-  where
+    where
     m', n' :: Nat
     m' = naturalToNat m
     n' = naturalToNat n
@@ -50,7 +50,7 @@ args = stdArgs { maxSuccess = 1000 }
 -- Run QuickCheck tests
 main :: IO ()
 main = do
-  quickCheck prop_addN
-  quickCheck prop_idN
-  quickCheck prop_multN
-  quickCheckWith args prop_subNat
+    quickCheck prop_addN
+    quickCheck prop_idN
+    quickCheck prop_multN
+    quickCheckWith args prop_subNat
