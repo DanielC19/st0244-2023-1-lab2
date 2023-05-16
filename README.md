@@ -10,6 +10,9 @@
 ## GHC version:
 - 9.6.1
 
+## Cabal version:
+- 3.10.1.0
+
 ## QuickCheck version:
 - 2.14.2
 
